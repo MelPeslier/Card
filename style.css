@@ -1,0 +1,204 @@
+:root{
+    --background-color : rgb(25,39,13);
+    --teint-color : rgba(25, 39, 13, 0.6);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap');
+
+body{
+    height: 100vh;
+    background-color: var(--background-color);
+    display: grid;
+    place-items: center;
+    /* Raccourcis pour ces deux propriétés dans l'ordre qui suit :
+        align-items: center;
+        justify-content: center; 
+    */
+}
+
+*{
+    /* Pour que les 'border' ne dépassent pas de l'élément */
+    box-sizing: border-box;
+}
+
+.card{
+    display: flex;
+    width: 400px;
+    aspect-ratio: 9/16;
+    border: 3px solid white;
+    border-radius: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    /* determine comment l'élément est positionner dans le document
+        Permet aux enfants de connaitre la position de leur parent
+    */
+    position: relative;
+}
+
+
+
+.card > .image{
+    background-image: url("images/image.jpg");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 0px;
+    top: 0px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    animation: 22s linear infinite show;
+}
+
+@keyframes show{
+    /* Vue 1 */
+    0% {
+        background-position: center;
+        background-size: cover;
+    }
+    
+    33.333% {
+        background-position: center;
+        background-size: cover;
+    }
+
+    /* Vue 2 */
+    33.3331% {
+        background-position: 12% 12%;
+        background-size: 150%;
+    }
+    
+    66.666% {
+        background-position: 33% 33%;
+        background-size: 150%;
+    }
+
+    /* Vue 3 */
+    66.6661% {
+        background-position: 75% 100%;
+        background-size: 175%;
+    }
+
+    100% {
+        background-position: 100% 53%;
+        background-size: 175%;
+    }
+}
+
+
+
+.card > .effect{
+    background-image: linear-gradient(rgba(192, 192, 192, 0.3) 0px 3px,Transparent 3px 9px);
+    background-size: 100% 9px;
+    background-position: 0% 0%;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-repeat: repeat;
+    z-index: 2;
+/* @keyframes
+    duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name 
+*/
+    animation: 22s linear infinite mysliding;
+}
+
+@keyframes mysliding {
+    from{
+        background-position: 0% 0%;
+    }
+    to{
+        background-position: 0% -100%;
+    }
+}
+
+
+
+.card > .content{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.card > .content > .user{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    color: white;
+    margin: 1em;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 5rem;
+    font-family: 'Oxygen', sans-serif;
+}
+
+.icon{
+    background-image: url("images/olive-tree.png");
+    position: relative;
+    color: white;
+    filter: invert();
+    margin-bottom: 3rem;
+    z-index: 4;
+    width: 100px;
+    height: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    animation: 22s linear infinite myicons;
+}
+
+@keyframes myicons{
+    0%{
+        background-image: url("images/olive-tree.png");
+    }
+    50%{
+        background-image: url("images/olive-tree.png");
+    }
+
+    50.0001%{
+        background-image: url("images/forest.png");
+    }
+    100%{
+        background-image: url("images/forest.png");
+    }
+}
+
+
+
+.card > .content > .user > .title{
+    position: relative;
+    font-size: 1.5em;
+    margin-bottom: 2rem;
+}
+
+.card > .content > .user > .link{
+    position: relative;
+    text-decoration: none;
+    color: white;
+}
+
+.card > .content > .user > .link:hover{
+    text-decoration-line: underline;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.ref{
+    margin-top: 3rem;
+    text-decoration: none;
+    color: brown;
+}
+.ref:hover{
+    text-decoration: underline;
+}
